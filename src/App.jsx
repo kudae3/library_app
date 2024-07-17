@@ -4,7 +4,7 @@ import './index.css'
 
 function App() {
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="space-y-3">
         <Navigation/>
         <Outlet/>
     </div>

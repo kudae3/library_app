@@ -4,7 +4,7 @@ import profile from '../assets/Billie_Eilish_profile.jpeg'
 function navigation() {
   return (
     <div className="p-4 border-b-2">
-        <ul className="flex justify-around items-center ">
+        <ul className="flex justify-around items-center max-w-6xl mx-auto">
             
             <li className="flex items-center space-x-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -13,7 +13,7 @@ function navigation() {
               <input type="search" placeholder="search..." className="outline-none"/>
             </li>
             
-            <Link to='/' className="flex justify-center items-center space-x-2 text-primary font-bold text-2xl md:mr-10">
+            <Link to='/' className="flex justify-center items-center space-x-2 text-primary font-bold text-3xl md:mr-10">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
               </svg>
@@ -35,6 +35,7 @@ function navigation() {
                   <img src={profile} className="w-full rounded-full" alt="" />
                 </div>
             </Link>
+        
         </ul>
     </div>
   )
