@@ -4,6 +4,7 @@ import {
 import App from "../App";
 import Create from '../pages/Create'
 import Home from '../pages/Home'
+import Detail from "../pages/Detail";
 
 
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ import Home from '../pages/Home'
         {
             path: '/create',
             element: <Create/>
+        }, 
+        {
+           path: '/book/:id',
+           element: <Detail/>
         }
       ]
     },

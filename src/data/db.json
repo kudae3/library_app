@@ -1,0 +1,22 @@
+{
+    "books" : [
+        {
+            "id" : "1",
+            "title" : "A Game of Throne",
+            "description" : "The first novel in A Song of Ice and Fire",
+            "categories" : ["novel", "fantasy fiction", "high fantasy"]
+        }, 
+        {
+            "id" : "2",
+            "title" : "Gone With the Wind",
+            "description" : "The story is set in Clayton County and Atlanta, both in Georgia, during the American Civil War and Reconstruction Era.",
+            "categories": ["novel", "Historical Fiction"]
+        }, 
+        {
+            "id" : "3",
+            "title" : "The Great Gatsby",
+            "description" : "Jay Gatsby, the enigmatic millionaire who throws decadent parties but doesn't attend them",
+            "categories": ["Tragedy", "novel"]
+        } 
+    ]
+}
