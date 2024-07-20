@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
+import bookImg from '../assets/Book_cover.jpg';
 
 function Detail() {
 
@@ -8,18 +9,35 @@ function Detail() {
 
   let{data: book, loading, error} = useFetch(url)
 
-  {error && <p>Something Went Wrong...</p>}
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto ">
+
+      {error && <p>Something Went Wrong...</p>}
+      
       {loading && <p>Loading...</p>}
+      
       { book && 
-        <div>
-            <h1>Title - {book.title}</h1>
-            <h2>{book.description}</h2>
-            {book.categories && book.categories.map((c, index)=> (
-               <p key={index}>{c}</p>
-            ))}
+        
+        <div className="grid grid-cols-2 gap-5">
+
+          <div>
+            <img src={bookImg} className="p-3 border" alt="" />
+          </div>
+
+          <div className="space-y-4">
+              <h1 className="text-3xl font-semibold">{book.title}</h1>
+              
+              <div className="flex flex-wrap space-x-2">
+                {book.categories && book.categories.map((c, index)=> (
+                  <p className="bg-green-500 text-white font-bold text-sm px-2 py-1 rounded-xl w-fit" key={index}>{c}</p>
+                ))}
+              </div>
+
+              <p className="italic">{book.description}</p>
+          
+          </div>
+        
         </div>
       }
     </div>
