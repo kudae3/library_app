@@ -22,6 +22,9 @@ function Create() {
       if(category == null || category == ""){
         setCategoryError(true)
       }
+      else if(categoryList.includes(category)){
+        setCategory('');
+      }
       else{
         setCategoryList(prev => [...prev, category])
         setCategory('');
