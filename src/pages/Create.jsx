@@ -13,12 +13,20 @@ function Create() {
   let [loading, setLoading] = useState(false)
   let [titleError, setTitleError] = useState(false)
   let [descriptionError, setdescriptionError] = useState(false)
+  let [categoryError, setCategoryError] = useState(false)
 
   let navigate = useNavigate();
 
   let AddCategory = () =>{
-      setCategoryList(prev => [...prev, category])
-      setCategory('');
+
+      if(category == null || category == ""){
+        setCategoryError(true)
+      }
+      else{
+        setCategoryList(prev => [...prev, category])
+        setCategory('');
+      }
+
   }
 
   let RemoveCategory = (c) => {
@@ -91,13 +99,18 @@ function Create() {
             </label>
             
             <div className="flex space-x-2 items-center">
-              <input value={category} onChange={e=> setCategory(e.target.value)} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  type="text" placeholder="category..." />
+              <input value={category} onChange={e=> {
+                setCategory(e.target.value)
+                setCategoryError(false)
+              }} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  type="text" placeholder="category..." />
               <button onClick={AddCategory} type="button" className="bg-blue-400 font-bold text-white p-2 rounded-md mb-3 hover:bg-blue-600 duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
               </button>
             </div>
+
+            { categoryError && <p className="text-sm text-red-500 font-semibold">You need to type something!</p>}            
 
             <div className="flex flex-wrap space-x-2">
                 {categoryList && categoryList.map((c, index)=> (

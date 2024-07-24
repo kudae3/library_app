@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import profile from '../assets/Billie_Eilish_profile.jpeg'
+import { useState } from "react"
 
-function navigation() {
+function Navigation() {
+
+  let navigate = useNavigate();
+
+  let [searchKey, setSearchKey] = useState();
+
+  let handleSubmit = (e) =>{
+    e.preventDefault();
+    navigate('/?search='+searchKey)
+  }
+
   return (
     <div className="p-4 border-b-2">
         <ul className="flex justify-around items-center max-w-6xl mx-auto">
@@ -10,7 +21,9 @@ function navigation() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
               </svg>
-              <input type="search" placeholder="search..." className="outline-none"/>
+              <form onSubmit={handleSubmit}>
+                <input value={searchKey} onChange={e=>setSearchKey(e.target.value)} type="search"  placeholder="search..." className="outline-none"/>
+              </form>
             </li>
             
             <Link to='/' className="flex justify-center items-center space-x-2 text-primary font-bold text-3xl md:mr-10">
@@ -41,4 +54,4 @@ function navigation() {
   )
 }
 
-export default navigation
+export default Navigation
