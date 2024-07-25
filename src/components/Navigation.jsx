@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import profile from '../assets/Billie_Eilish_profile.jpeg'
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ThemeContext } from "../contexts/ThemeContext";
+
 
 function Navigation() {
 
@@ -12,6 +14,9 @@ function Navigation() {
     e.preventDefault();
     navigate('/?search='+searchKey)
   }
+
+  let {theme} = useContext(ThemeContext)
+  console.log(theme);
 
   return (
     <div className="p-4 border-b-2">

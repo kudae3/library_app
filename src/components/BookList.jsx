@@ -49,7 +49,7 @@ function BookList() {
         
         </div>
 
-        {!books.length && <p className='text-center text-slate-500 font-2xl'>No book found!</p>}
+        {books && !books.length && <p className='text-center text-slate-500 font-2xl'>No book found!</p>}
     
     </div>
   )
