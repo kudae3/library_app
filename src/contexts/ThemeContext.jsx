@@ -3,26 +3,34 @@ import { createContext, useReducer } from "react"
 
 export let ThemeContext = createContext();
 
-let themeReducer = (state, action) => {
+let reducer = (state, action) => {
   switch (action.type) {
-    case "CHANGE_THEME":
-      return {...state, theme: action.payload}  
+    case 'LIGHT_MODE':
+      return ({...state, theme: 'light'});
+    case 'DARK_MODE':
+      return ({...state, theme: 'dark'})    
     default:
-      return {state};
+      return state;
   }
 }
 
-export const ThemeContextProvider = ({children}) => {
+export let ThemeContextProvider = ({children}) => {
 
-  let [action, dispatch] = useReducer(themeReducer, {'theme': 'light'});
+  let [state, dispatch] = useReducer(reducer, {theme: 'light'});
 
+  // action -> type + payload
   let changeTheme = () => {
-    dispatch({type: 'CHANGE_THEME', payload: 'dark'})
+    if(state.theme == 'dark'){
+      dispatch({type: 'LIGHT_MODE'})
+    }
+    else{
+      dispatch({type: 'DARK_MODE'})
+    }
   }
 
   return (
-    <ThemeContext.Provider value={{...action, changeTheme}}>
-        {children}
+    <ThemeContext.Provider value={{...state, changeTheme}}>
+      {children}
     </ThemeContext.Provider>
   )
 }
