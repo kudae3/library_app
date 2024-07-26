@@ -15,11 +15,11 @@ function Navigation() {
     navigate('/?search='+searchKey)
   }
 
-  let {theme} = useContext(ThemeContext)
+  let {theme, changeTheme} = useContext(ThemeContext)
   console.log(theme);
 
   return (
-    <div className="p-4 border-b-2">
+    <div className="p-4 border-b-2" onClick={changeTheme}>
         <ul className="flex justify-around items-center max-w-6xl mx-auto">
             
             <li className="flex items-center space-x-2">
