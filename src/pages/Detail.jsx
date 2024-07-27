@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
 import bookImg from '../assets/Book_cover.jpg';
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 function Detail() {
 
@@ -9,6 +11,7 @@ function Detail() {
 
   let{data: book, loading, error} = useFetch(url)
 
+  let {isDark} = useContext(ThemeContext)
 
   return (
     <div className="max-w-6xl mx-auto ">
@@ -22,7 +25,7 @@ function Detail() {
         <div className="grid grid-cols-2 gap-5">
 
           <div>
-            <img src={bookImg} className="p-3 border" alt="" />
+            <img src={bookImg} className={`p-3 border ${isDark ? 'border-0' : ''}`} alt="" />
           </div>
 
           <div className="space-y-4">

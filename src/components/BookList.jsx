@@ -1,7 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import BookCover from '../assets/Book_cover.jpg'
 import useFetch from '../hooks/useFetch'
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 function BookList() {
+
+    let {isDark} = useContext(ThemeContext)
 
     let location = useLocation();
     let params = new URLSearchParams(location.search)
@@ -21,7 +25,7 @@ function BookList() {
             
             <Link  key={book.id} to={`/book/${book.id}`}>
                 
-                <div className="p-3 border">
+                <div className={`p-3 border ${isDark ? 'border-0' : ''}`}>
                 
                 <img src={BookCover} alt="" />
                 
