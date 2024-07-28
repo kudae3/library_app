@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../contexts/ThemeContext";
 import 'ldrs/superballs'
 
 
@@ -14,6 +15,7 @@ function Create() {
   let [titleError, setTitleError] = useState(false)
   let [descriptionError, setdescriptionError] = useState(false)
   let [categoryError, setCategoryError] = useState(false)
+  let {isDark} = useContext(ThemeContext);
 
   let navigate = useNavigate();
 
@@ -70,7 +72,7 @@ function Create() {
         <form onSubmit={CreateBook} className="w-full max-w-lg mx-auto pt-14">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label className={`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ${isDark ? 'text-slate-200' : ''}`}>
                 Title
               </label>
               <input value={title} onChange={ e => {
@@ -82,7 +84,7 @@ function Create() {
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label className={`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ${isDark ? 'text-slate-200' : ''}`}>
                 Description
               </label>
               <textarea value={description} onChange={e=> {
@@ -95,7 +97,7 @@ function Create() {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
         
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <label className={`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ${isDark ? 'text-slate-200' : ''}`}>
                 Categories
               </label>
         

@@ -6,13 +6,13 @@ import { ThemeContext } from "../contexts/ThemeContext";
 
 function Navigation() {
 
-  let navigate = useNavigate();
+  let navigate = useNavigate()
 
-  let [searchKey, setSearchKey] = useState();
+  let [key, setKey] = useState();
 
-  let handleSubmit = (e) =>{
+  let handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/?search='+searchKey)
+    navigate('/?search='+key)
   }
 
   let {isDark, changeTheme} = useContext(ThemeContext)
@@ -26,7 +26,7 @@ function Navigation() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
               </svg>
               <form onSubmit={handleSubmit}>
-                <input value={searchKey} onChange={e=>setSearchKey(e.target.value)} type="search"  placeholder="search..." className={`outline-none ${isDark ? 'bg-slate-800 text-slate-300' : ''}`}/>
+                <input value={key} onChange={(e)=>setKey(e.target.value)} type="search"  placeholder="search..." className={`outline-none ${isDark ? 'bg-slate-800 text-slate-300' : ''}`}/>
               </form>
             </li>
             

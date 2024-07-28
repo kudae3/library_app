@@ -7,11 +7,11 @@ function BookList() {
 
     let {isDark} = useContext(ThemeContext)
 
-    let location = useLocation();
+    let location = useLocation()
     let params = new URLSearchParams(location.search)
     let search = params.get('search');
 
-    let {data : books , loading, error} = useFetch(`http://localhost:3000/books${search ? `?q=${search}` : ''}`)
+    let {data : books , loading, error} = useFetch(`http://localhost:3000/books${ search ? `?q=${search}` : ``}`)
 
     {error && <p>Something went wrong...</p>}
 
@@ -53,7 +53,7 @@ function BookList() {
         
         </div>
 
-        {books && !books.length && <p className='text-center text-slate-500 font-2xl'>No book found!</p>}
+        {books && !books.length && <p className='text-center text-slate-500 font-2xl min-h-screen'>No book found!</p>}
     
     </div>
   )
